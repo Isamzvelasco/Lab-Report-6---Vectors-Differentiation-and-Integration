@@ -11,16 +11,15 @@ using namespace std;
 
 // Definimos el intervalo de integracion [a, b]
 const double a = 0.0;
-const double b = 1.0;
+const double b = 3.0;
 
 // Numero de puntos de Gauss-Legendre
 const int N = 4;
 
-// Funcion a integrar: f(x) = e^x
+// Funcion a integrar: f(x) = e^(-x^2)
 double f(double x) {
-    return exp(x);
+    return exp(-pow(x, 2));
 }
-
 
 // 1. Integración por metodo de Gauss-Legendre
 
@@ -85,16 +84,14 @@ double punto_medio(int n) {
 }
 
 
-// PROGRAMA PRINCIPAL
 
 int main() {
 
     cout << fixed << setprecision(10);
 
     // Calculamos el valor exacto de la integral para comparar los resultados
-    // Integral exacta de e^x evaluada entre 0 y 1 = e^1 - e^0
-    double valor_exacto = exp(b) - exp(a);
-    
+    // Integral exacta de e^(-x^2) evaluada entre 0 y 3
+    double valor_exacto = (sqrt(M_PI) / 2.0) * (erf(b) - erf(a));
 
 
     // Para el punto 1: Calculamos la integral con Gauss-Legendre
